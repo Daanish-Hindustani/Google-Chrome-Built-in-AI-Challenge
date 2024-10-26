@@ -3,6 +3,7 @@
 
 
 ## Description
+ - An Crew of AI Agents which take in a resume critique it then rewrite it and finally formate it with proper ats key words. 
  - CrewAI tools empower agents with capabilities ranging from web searching and data analysis to collaboration and delegating tasks among coworkers.
 
 ## Libraries Used
@@ -13,7 +14,7 @@
  - streamlit==1.34.0
 
 ## Installation
-
+N/A
 
 
 ## Collaboration
