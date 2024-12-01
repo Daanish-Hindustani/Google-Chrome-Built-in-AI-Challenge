@@ -12,5 +12,8 @@ crew = Crew(
 
 # starting the task execution process with enhanced feedback
 
-result = crew.kickoff(inputs={'topic': 'AI in healthcare'})
+result = crew.kickoff(inputs={
+    'resume_path': 'resume/resume.pdf',
+    'template_path': 'templates/template.html'
+})
 print(result)

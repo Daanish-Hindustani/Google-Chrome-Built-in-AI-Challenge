@@ -3,15 +3,16 @@ from crewai import Agent
 from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
-from tools import pdf_reader
+import tools 
 from crewai_tools import (
     SerperDevTool,
 )
 load_dotenv()
-os.environ['SERPER_API_KEY'] = os.getenv('SERPER_API_KEY')
+#os.environ['SERPER_API_KEY'] = os.getenv('SERPER_API_KEY')
+os.environ['GOOGLE_API_KEY'] = os.getenv('GOOGLE_API_KEY')
 
 # inititlaize the tool for internet searching capabilities
-search_tool = SerperDevTool()
+# search_tool = SerperDevTool()
 
 
 
@@ -36,7 +37,7 @@ resume_advisor = Agent(
                         tailored to each individual's career goals.
                    """
         ),
-        tools=[search_tool, pdf_reader],
+        tools=[tools.pdf_reader],
         llm=llm,
         allow_delegation=True
 )
@@ -47,7 +48,7 @@ resume_writer = Agent(
     role="Resume Writer ",
     goal="""
             Craft a polished resume incorporating the suggested improvements 
-            while ensuring consistent formatting and ATS compatibility.
+            while ensuring consistent formatting and ATS compatibility. Use {template_path} as an reference.
          """,
     verbose=True,
     memory=True,

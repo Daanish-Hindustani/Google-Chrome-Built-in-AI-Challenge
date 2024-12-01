@@ -10,8 +10,9 @@ resume_review_task = Task(
                         of the current resume, construct a detailed response.
                  """
     ),
-    expected_output="""A list of 10 detailed bullet points outlining the necessary improvements 
-                        for the resume and recommendations on how it should be structured.
+    expected_output="""A list bullet points outlining the necessary improvements 
+                        for the resume and recommendations on how it should be structured. This should be given to the resume_writer.
+                        The resume_writer should Have a detialed outline of what changes need to be made and the details of the resume.
                     """
     ,
     
@@ -23,11 +24,12 @@ resume_writing_task = Task(
     description=( """
                     Review the provided feedback and expand each topic into a comprehensive section for the resume. 
                     Ensure that the resume is detailed, includes all relevant information, and maintains a cohesive structure.
+                    IMPORTANT: follow the template given {template_path} exactly 
                  """
     ),
     expected_output=""" A fully developed resume with each section complete and containing all necessary information. 
-                        The resume should be properly formatted PDF file and free of any code blocks.
+                        The resume should be properly formatted html file that is formatted the same as {template_path} and very professional.
                     """,
     agent=resume_writer,
-    output_file='Resume.pdf'
+    output_file='my_resume.html'
 )
