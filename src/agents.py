@@ -26,7 +26,7 @@ llm = ChatGoogleGenerativeAI(model='gemini-1.5-flash',
 
 resume_advisor = Agent(
         role="Resume Advisor",
-        goal="Give feedback on potential improvements to a resume given {resume_path}.",
+        goal="Improve the resume given {resume_path}.",
         verbose=True,
         memory=True,
         backstory=( """
@@ -39,6 +39,7 @@ resume_advisor = Agent(
         ),
         tools=[tools.pdf_reader],
         llm=llm,
+        resume_path ='resume/resume.pdf',
         allow_delegation=True
 )
 
@@ -48,7 +49,7 @@ resume_writer = Agent(
     role="Resume Writer ",
     goal="""
             Craft a polished resume incorporating the suggested improvements 
-            while ensuring consistent formatting and ATS compatibility. Use {template_path} as an reference.
+            while ensuring consistent formatting and ATS compatibility. 
          """,
     verbose=True,
     memory=True,
@@ -59,7 +60,6 @@ resume_writer = Agent(
                     resumes not only highlight key qualifications effectively but also 
                     meet the stringent requirements of Applicant Tracking Systems (ATS),
                     making it easier for candidates to stand out in the hiring process.
-                    Please write it back to the resume {resume_path}.
                """
     ),
     tools=[],

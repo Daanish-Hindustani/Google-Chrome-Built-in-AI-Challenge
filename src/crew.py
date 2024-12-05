@@ -14,6 +14,5 @@ crew = Crew(
 
 result = crew.kickoff(inputs={
     'resume_path': 'resume/resume.pdf',
-    'template_path': 'templates/template.html'
 })
 print(result)
